@@ -1,0 +1,88 @@
+.tabela {
+    background-color: #ffe4f0; /* rosa bem claro */
+    border-radius: 15px;
+    padding: 20px 30px;
+    width: 95%;
+    margin: 40px auto;
+    box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
+    text-align: center;
+}
+
+.tabela h2 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #d63384; /* rosa pink vibrante */
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid #d63384;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.tabela a {
+    text-decoration: none;
+    color: #ff69b4; /* rosa chiclete */
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Courier New', Courier, monospace;
+    color: #4a004a;
+}
+
+th {
+    background-color: #ffb6c1; /* rosa claro */
+    color: #4a004a;
+    padding: 14px;
+    font-size: 18px;
+    border: 1px solid #d63384;
+}
+
+td {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #f7a8d0;
+    background-color: #fff0f5; /* lavanda rosada */
+}
+
+tr:nth-child(even) td {
+    background-color: #fce4ec; /* rosa pálido */
+}
+
+tr:hover td {
+    background-color: #f8bbd0; /* rosa candy suave */
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.btn-voltar {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btn-voltar img {
+    border-radius: 50%;
+    border: 2px solid #d63384;
+    background-color: #fff0f5;
+    box-shadow: 0 0 10px rgba(255,105,180,0.5);
+}
+
+.btn-voltar:hover {
+    transform: scale(1.1);
+}

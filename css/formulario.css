@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    background-color: #ffe4f0; /* Rosa bebê */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.global {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff0f5; /* Lavanda rosada */
+    width: 320px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 192, 203, 0.6); /* Rosa leve */
+}
+
+.formulario {
+    background-color: #fff0f5; /* Lavanda rosada */
+    border-radius: 20px;
+    border: 2px solid #d63384; /* Rosa vibrante */
+    padding: 15px;
+}
+
+.formulario h2 {
+    color: #d63384; /* Rosa pink */
+    font-size: 35px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.login label {
+    color: #4a004a; /* Roxo escuro suave */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.login input[type='text'],
+.login input[type='password'],
+.login input[type='number'] {
+    height: 40px;
+    border-radius: 10px;
+    border: 2px solid #d63384; /* Rosa vibrante */
+    background-color: #fff; /* Branco para contraste */
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+.login input[type='submit'] {
+    background-color: #ff69b4; /* Rosa chiclete */
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    height: 45px;
+    transition: background-color 0.3s;
+}
+
+.login input[type='submit']:hover {
+    background-color: #d63384; /* Rosa pink forte */
+    color: #fff0f5; /* Lavanda clara */
+    cursor: pointer;
+}
+
+.rbativo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.rbativo input[type='radio'] {
+    accent-color: #d63384; /* Rosa vibrante */
+}
+
+.rbativo label {
+    color: #4a004a; /* Roxo escuro suave */
+    font-size: 16px;
+}
+
+.btn-voltar img {
+    border-radius: 50%;
+    border: 2px solid #d63384; /* Rosa pink */
+    background-color: #fff0f5; /* Lavanda rosada */
+    box-shadow: 0 0 10px rgba(255,105,180,0.5); /* Sombra rosa */
+}
