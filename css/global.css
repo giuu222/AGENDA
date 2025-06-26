@@ -9,16 +9,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffb6c1; /* Rosa claro */
+    background-color: #C71585; /* Rosa claro */
     border-radius: 20px;
     height: 75px;
     padding: 0 20px;
-    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5);
+    box-shadow: 0 4px 10px #ffffff;
 }
 
 .topo h1 {
     font-size: 24px;
-    color: #4a004a; /* Texto escuro para contraste */
+    color: #ffffff; /* Texto escuro para contraste */
     letter-spacing: 2px;
 }
 
@@ -56,8 +56,8 @@ body {
 .menu1, .menu2, .menu3, .menu4, .menu5, .menu6 {
     width: 280px;
     height: 280px;
-    background-color: #fff0f5; /* Lavanda rosada */
-    border: 3px solid #d63384; /* Rosa pink */
+    background-color: #DB7093; /* Lavanda rosada */
+    border: 3px solid #FFFFFF; /* Rosa pink */
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -85,4 +85,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.menu-label {
+    margin-top: 10px;
+    font-size: 22px;
+    color:#FF1493;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+}
+ 
+.menu1:hover .menu-label,
+.menu2:hover .menu-label,
+.menu3:hover .menu-label,
+.menu4:hover .menu-label {
+    opacity: 1;
 }
