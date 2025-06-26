@@ -47,13 +47,13 @@ else{
 
             <div class='menus'>
                 <!-- OS CARDS DE MENU -->
-                <!-- <div class="menu1">
-                    <a href="usuario_cadastra.php"><img src ='icons/add9.png' width="200" height="200"></a>
-                </div> -->
+                 <div class="menu1">
+                    <a href="cliente_cadastra.php"><img src ='icons/add9.png' width="200" height="200"></a>
+                </div>
 
-              <!--  <div class="menu2">
-                    <a href="usuario_lista.php"><img src ='icons/th2.png' width="200" height="200"></a>
-                </div> -->
+               <div class="menu2">
+                    <a href="cliente_lista.php"><img src ='icons/th2.png' width="200" height="200"></a>
+                </div> 
 
                 <div class="menu3">
                     <a href="funcionario_cadastra.php"><img src ='icons/business.png' width="200" height="200"></a>
