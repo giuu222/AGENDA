@@ -3,7 +3,7 @@
 include("utils/conectadb.php");
 include("utils/verificalogin.php");
 
-// TRAZ OS FUNCIONÁRIOS DO BANCO
+// TRAZ OS FUNCIONARIOS DO BANCO
 $sqlcli = "SELECT * FROM clientes";
 $enviaquery = mysqli_query($link, $sqlcli);
 
@@ -57,7 +57,7 @@ $enviaquery = mysqli_query($link, $sqlcli);
                     
                     
                     <!-- USANDO GET BRABO -->
-                    <td><a href='cliente_altera.php?id=<?= $tbl[0]?>'><img src='icons/lapisrosa.png' width=20 height=20 border: 2px solid #fff; border-radius: 1px; margin: 2px;'></a></td>
+                    <td><a href='cliente_altera.php?id=<?= $tbl[0]?>'><img src='icons/hellokitty.png' width=60 height=60 border: 2px solid #fff; border-radius: 1px; margin: 2px;'></a></td>
 
                     
                 </tr>
