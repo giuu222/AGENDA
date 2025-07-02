@@ -60,7 +60,10 @@ $enviaquery = mysqli_query($link, $sqlfun);
                     <td><?=$tbl[5]?></td> <!--COLETA ATIVO DO FUN [5]-->
                     <!-- $tbl2 COLETA SOMENTE O NOME DO USUARIO DO FUN -->
                     <td><?=$tbl[7]?></td> <!--COLETA LOGIN DO USU [1]-->
-
+                    <td><?=$tbl[10] == 1 ?"SIM":"NÃO"?></td>
+                    <!-- USANDO GET BRABO -->
+                    <td><a href='funcionario_altera.php?id=<?= $tbl[0]?>'>
+                    <img src='icons/lapisrosa.png' width=20 height=20 style='border: 2px solid #fff; border-radius: 1px; margin: 2px;'></a></td>
                     
                 </tr>
                 <?php

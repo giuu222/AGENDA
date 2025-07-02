@@ -3,9 +3,12 @@
 include("utils/conectadb.php");
 include("utils/verificalogin.php");
 
-// TRAZ OS CLIENTES DO BANCO
+// TRAZ OS FUNCIONÁRIOS DO BANCO
 $sqlcli = "SELECT * FROM clientes";
 $enviaquery = mysqli_query($link, $sqlcli);
+
+// TO DO: FAZER O RADIO OU BUTTON PARA LISTAR TODOS, INATIVOS, ATIVOS
+
 ?>
 
 <!DOCTYPE html>
@@ -21,43 +24,52 @@ $enviaquery = mysqli_query($link, $sqlcli);
 <body>
     <div class='global'>
         <div class='tabela'>
-
-            <!-- BOTÃO VOLTAR FIXO -->
-            <a href="backoffice.php" class="btn-voltar">
-                <img src='icons/SETAAAA.webp' width="50" height="50" alt="Voltar">
-            </a>
-
-            <h2>LISTA DE CLIENTES</h2>
-
+            <!-- BOTÃO VOLTAR -->
+            <a href="backoffice.php"><img src='icons/SETAAAA.webp' width=50 height=50></a>
+            <h1>LISTA DE CLIENTES</h1>
+            
+           
             <table>
-                <tr>
+                <tr> 
                     <th>ID CLIENTE</th>
                     <th>NOME</th>
                     <th>CPF</th>
                     <th>CONTATO</th>
-                    <th>DATA DE NASCIMENTO</th>
+                    <th>DATA NASCIMENTO</th>  
                     <th>STATUS</th>
+                    <th>ALTERAÇÃO</th>
                 </tr>
 
                 <!-- COMEÇOU O PHP -->
                 <?php
-                while ($tbl = mysqli_fetch_array($enviaquery)) {
+                    
+                        while ($tbl = mysqli_fetch_array($enviaquery)){
+                            // while($tbl2 = mysqli_fetch_array($enviaquery2)){
                 ?>
-
+                
                 <tr>
-                    <td><?= $tbl['CLI_ID'] ?></td>
-                    <td><?= $tbl['CLI_NOME'] ?></td>
-                    <td><?= $tbl['CLI_CPF'] ?></td>
-                    <td><?= $tbl['CLI_TEL'] ?></td>
-                    <td><?= date('d/m/Y', strtotime($tbl['CLI_DATANASC'])) ?></td>
-                    <td><?= ($tbl['CLI_ATIVO'] == 1) ? 'ATIVO' : 'INATIVO' ?></td>
-                </tr>
+                    <td><?=$tbl[0]?></td> <!--COLETA CÓDIGO DO CLI [0] -->
+                    <td><?=$tbl[1]?></td> <!--COLETA NOME DO CLI [1]-->
+                    <td><?=$tbl[2]?></td> <!--COLETA CPF DO CLI [2]-->
+                    <td><?=$tbl[3]?></td> <!--COLETA CONTATO DO CLI[3]-->
+                    <td><?=$tbl[5]?></td> <!--COLETA STATUS DO CLI [4]-->
+                    <td><?=$tbl[4] == 1? 'ATIVO':'INATIVO'?></td> <!--COLETA ATIVO DO CLI [5]-->
+                    
+                    
+                    <!-- USANDO GET BRABO -->
+                    <td><a href='cliente_altera.php?id=<?= $tbl[0]?>'><img src='icons/lapisrosa.png' width=20 height=20 border: 2px solid #fff; border-radius: 1px; margin: 2px;'></a></td>
 
+                    
+                </tr>
                 <?php
-                }
+                    }
+                
                 ?>
             </table>
         </div>
+
     </div>
+    
+    
 </body>
 </html>

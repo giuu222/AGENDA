@@ -1,32 +1,47 @@
 <?php
+
 // CONEXÃO COM O BANCO DE DADOS
 include("utils/conectadb.php");
 include("utils/verificalogin.php");
 
-// ====================== PROCESSAMENTO DO FORM ======================
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//APÓS O VAMOS CADASTRAR O FUN E O USU AO MESMO TEMPO
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    
+    // COLETAR CAMPOS DOS INPUTS POR NAMES PARA VARIÁVEIS PHPs
+    $nomecli = $_POST['txtnome'];
+    $cpfcli = $_POST['txtcpf'];
+    $contatocli = $_POST['txtcontato'];
+    $ativocli = $_POST['ativo'];
+    $datanasccli = $_POST['dtdata'];
+    // COLETA SENHA DE USUARIO
+    $senhacli = sha1($_POST['txtsenha']);
 
-    // COLETA DOS CAMPOS DO FORM
-    $nomecli    = $_POST['txtnome'];
-    $cpfcli     = $_POST['txtcpf'];
-    $telcli     = $_POST['txtcontato'];
-    $datanasc   = $_POST['txtdatanasc'];  // yyyy-mm-dd
-    $ativocli   = $_POST['ativo'];
+    // INICIANDO QUERIES DE BANCO
+    // VERIFICANDO SE O CLIENTE EXISTE
+    $sql = "SELECT COUNT(CLI_CPF) FROM clientes
+    WHERE CLI_CPF = '$cpfcli'";
+    
+    // ENVIANDO A QUERY PARA O BANQUINHO
+    $enviaquery = mysqli_query($link, $sql);
+    // RETORNO DO QUE VEM DO BANCO
+    $retorno = mysqli_fetch_array($enviaquery) [0];
 
-    // 1) VERIFICA SE CPF JÁ EXISTE
-    $sql  = "SELECT COUNT(CLI_CPF) FROM clientes WHERE CLI_CPF = '$cpfcli'";
-    $env  = mysqli_query($link, $sql);
-    $dup  = mysqli_fetch_array($env)[0];
+    // VALIDAÇÃO DO RETORNO
+    if($retorno == 1){
+        // INFORMA QUE O USUARIO JÁ EXISTE POIS RETORNO = 1
+        echo("<script>window.alert('CLIENTE JÁ EXISTE');</script>");
 
-    if ($dup == 1) {
-        echo "<script>window.alert('CLIENTE JÁ EXISTE');</script>";
-    } else {
-        // 2) INSERE NOVO CLIENTE
-        $sql = "INSERT INTO clientes (CLI_NOME, CLI_CPF, CLI_TEL, CLI_ATIVO, CLI_DATANASC)
-                VALUES ('$nomecli', '$cpfcli', '$telcli', $ativocli, '$datanasc')";
-        mysqli_query($link, $sql);
+    }
+    else{
+        // CASO FUNCIONÁRIO NÃO ESTEJA CADASTRADO
+        $sql = "INSERT INTO clientes (CLI_NOME, CLI_CPF, CLI_TEL,CLI_DATANASC, CLI_ATIVO, CLI_SENHA)
+        VALUES ('$nomecli', '$cpfcli', '$contatocli', '$datanasccli', $ativocli,  '$senhacli' )";
 
-        echo "<script>window.alert('CLIENTE CADASTRADO COM SUCESSO!');</script>";
+        // CONECTA COM O BANCO E MANDA A QUERY
+        $enviaquery = mysqli_query($link, $sql);
+
+        
+        echo("<script>window.alert('CLIENTE ALASTRADO COM SUCESSO!');</script>");
     }
 }
 ?>
@@ -43,47 +58,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="global">
-
+        
         <div class="formulario">
-            <!-- Botão voltar -->
-            <a href="backoffice.php" class="btn-voltar">
-                <img src="icons/SETAAAA.webp" width="50" height="50" alt="Voltar">
-            </a>
-
-            <h2>CADASTRO</h2>
-
-            <form class="login" action="cliente_cadastra.php" method="post">
+<!-- FIRULAS Y FIRULAS -->
+ 
+            <a href="backoffice.php"><img src='icons/SETAAAA.webp' width=50 height=50></a>
+            
+            <form class='login' action="cliente_cadastra.php" method="post">
+            
                 <label>NOME DO CLIENTE</label>
-                <input type="text" name="txtnome" placeholder="Digite o nome completo" required>
+                <input type='text' name='txtnome' placeholder='Digite o nome completo' required>
                 <br>
-
                 <label>CPF</label>
-                <input type="number" name="txtcpf" placeholder="Digite o CPF" required>
+                <input type='number' name='txtcpf' placeholder='Digite o CPF' required>
                 <br>
-
-                <label>TELEFONE</label>
-                <input type="number" name="txtcontato" placeholder="Digite o telefone" required>
+                <label>CONTATO</label>
+                <input type='number' name='txtcontato' placeholder='Digite o telefone' required>
                 <br>
-
                 <label>DATA DE NASCIMENTO</label>
-                <input type="date" name="txtdatanasc" required>
-                <br><br>
-
-                <label>STATUS DO CLIENTE:</label>
-                <div class="rbativo">
-                    <input type="radio" name="ativo" id="ativo" value="1" checked>
-                    <label for="ativo">ATIVO</label>
+                <input type='date' name='dtdata' placeholder='DD/MM/AAAA' required>
+                <br>
+                <br>
+    
+                <label>DIGITE UMA SENHA</label>
+                <input type='password' name='txtsenha' placeholder='Senha aqui'>
+                <br>
+          
+                <label>INICIAR CLIENTE COMO:</label>
+                <div class='rbativo'>
+                    
+                    <input type="radio" name="ativo" id="ativo" value="1" checked><label>ATIVO</label>
                     <br>
-                    <input type="radio" name="ativo" id="inativo" value="0">
-                    <label for="inativo">INATIVO</label>
+                    <input type="radio" name="ativo" id="inativo" value="0"><label>INATIVO</label>
                 </div>
 
                 <br>
-                <input type="submit" value="CADASTRAR">
+                <input type='submit' value='CADASTRAR'>
             </form>
-
+            
             <br>
+
         </div>
     </div>
+    
 </body>
 </html>
